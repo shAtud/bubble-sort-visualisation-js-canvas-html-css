@@ -1,4 +1,6 @@
 const canvas = document.querySelector('canvas');
+canvas.width = 1366;
+canvas.height = 625;
 const {width,height} = canvas;
 ctx = canvas.getContext('2d');
 const FPS = 20;

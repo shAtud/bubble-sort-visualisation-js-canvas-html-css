@@ -3,14 +3,16 @@ canvas.width = 1366;
 canvas.height = 625;
 const {width,height} = canvas;
 ctx = canvas.getContext('2d');
+
+
 const FPS = 20;
 const arr = []
-const N = 30;
+const N = 40;
 const space = 10;
 const w = (width- space*(N+1))/N ;
 
 for(let i=0;i<N;i++){
-    const h = Math.random()*(height-150) +50;
+    const h = Math.random()*(height -70 -50) +50;
     arr.push({
         x:i*w +space*(i+1),
         y:height-h,
@@ -49,11 +51,23 @@ const animate = ()=>{
 
     }
     j++;
-    if(j>=arr.length-1-i){
-       
-        i++;
-        j = 0;
+    if(i<arr.length){
+        if(j>=arr.length-1-i){
+      
+            i++;
+            j = 0;
+            for(let k=arr.length-i;k<arr.length;k++){
+                console.log(k)
+                arr[k].color = 'white'
+            }
+        };
+
+    }else{
+        alert('sort ended ')
+        window.location.reload();
+
     }
+   
     //drawing
     for(let i=0;i<arr.length;i++){
         const rect = arr[i];
